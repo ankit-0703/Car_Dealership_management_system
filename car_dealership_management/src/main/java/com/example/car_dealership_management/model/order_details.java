@@ -2,22 +2,21 @@ package com.example.car_dealership_management.model;
 
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.util.Date;
-
+@Getter
+@Setter
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class order_table {
+public class order_details {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int order_id;
+
     private int cust_id;
     private int car_model_id;
-    private Date date_of_order;
 
+    private int date_of_order;
 }

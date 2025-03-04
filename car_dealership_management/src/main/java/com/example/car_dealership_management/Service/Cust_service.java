@@ -23,4 +23,13 @@ public class Cust_service {
         System.out.println("Save successfully");
 
     }
+
+    public void update(Customer customer) {
+        custRepo.save(customer);
+    }
+
+
+    public void delete(int custId) {
+        custRepo.deleteById(custId);
+    }
 }

@@ -3,10 +3,7 @@ package com.example.car_dealership_management.controller;
 import com.example.car_dealership_management.Service.Cust_service;
 import com.example.car_dealership_management.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,5 +22,14 @@ public class custController {
         custService.addCustomer(customer);
 
     }
-
+    @PutMapping("customer")
+    public String updateCust(@RequestBody Customer customer){
+        custService.update(customer);
+        return "Value is been updated";
+    }
+    @DeleteMapping("customer/{custId}")
+    public String deleteCust(@PathVariable int custId){
+        custService.delete(custId);
+        return "Deleted";
+    }
 }

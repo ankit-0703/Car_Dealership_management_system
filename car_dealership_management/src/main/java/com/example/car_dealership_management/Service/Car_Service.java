@@ -18,7 +18,20 @@ public class Car_Service {
         return carRepo.findAll();
     }
 
+
     public void addCars(Car_comp car) {
         carRepo.save(car);
+    }
+
+    public void deleteCar(int carId) {
+        carRepo.deleteById(carId);
+    }
+
+    public void update(Car_comp car){
+        carRepo.save(car);
+    }
+
+    public Car_comp getCarById(int carModelId) {
+        return carRepo.findById(carModelId).orElse(new Car_comp());
     }
 }
