@@ -19,9 +19,9 @@ public class custController {
         return cust;
     }
     @PostMapping("customer")
-    public void addCustomer(@RequestBody Customer customer){
+    public Customer addCustomer(@RequestBody Customer customer){
         custService.addCustomer(customer);
-
+        return null;
     }
     @PutMapping("customer")
     public String updateCust(@RequestBody Customer customer){

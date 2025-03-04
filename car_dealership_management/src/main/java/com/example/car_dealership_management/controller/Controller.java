@@ -1,9 +1,12 @@
 package com.example.car_dealership_management.controller;
 
+import com.example.car_dealership_management.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Component
 @org.springframework.stereotype.Controller
@@ -37,5 +40,19 @@ public class Controller {
     public String add_customer(){
         return "add-customer";
     }
+
+    @GetMapping("add-customer/new")
+    public String addCustomer(Model model){
+        Customer customer =new Customer();
+        model.addAttribute("customers",customer);
+        return "add-customer";
+    }
+
+    @PostMapping("add-customer")
+    public String saveCustomer(@ModelAttribute("customers")Customer customer){
+        custControllers.addCustomer(customer);
+        return "customers";
+    }
+
 
 }
