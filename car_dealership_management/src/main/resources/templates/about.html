@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - [Your Dealership Name]</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #3498db; /* A professional blue */
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        nav {
+            background-color: #2c3e50; /* Darker navigation */
+            color: white;
+            text-align: center;
+            padding: 0.5em 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #34495e; /* Slightly lighter on hover */
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .about-section {
+            margin-bottom: 30px;
+        }
+        .about-section h2 {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        .team-section {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .team-member {
+            width: 200px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .team-member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>About [Your Dealership Name]</h1>
+</header>
+<nav>
+    <a href="/home">Home</a>
+    <a href="/customers">Customers</a>
+    <a href="/inventory">Inventory</a>
+    <a href="/sales">Sales</a>
+    <a href="/contact">Contact</a>
+</nav>
+<div class="container">
+    <div class="about-section">
+        <h2>Our Story</h2>
+        <p>[Your Dealership Name] was founded in [Year] with a simple mission: to provide high-quality vehicles and exceptional customer service. Over the years, we've grown from a small family-owned business to a trusted dealership serving the [City/Region] area. We believe in building long-term relationships with our customers, and we strive to make every car buying experience enjoyable and stress-free.</p>
+        <p>We are passionate about cars and dedicated to helping you find the perfect vehicle to fit your lifestyle and budget. Our team of experienced professionals is here to guide you through every step of the process, from browsing our extensive inventory to securing financing and taking delivery of your new car.</p>
+    </div>
+    <div class="about-section">
+        <h2>Our Values</h2>
+        <ul>
+            <li><strong>Integrity:</strong> We conduct our business with honesty and transparency.</li>
+            <li><strong>Customer Focus:</strong> Your satisfaction is our top priority.</li>
+            <li><strong>Quality:</strong> We offer only the best vehicles and services.</li>
+            <li><strong>Community:</strong> We are committed to giving back to our local community.</li>
+        </ul>
+    </div>
+    <div class="about-section">
+        <h2>Meet Our Team</h2>
+        <div class="team-section">
+            <div class="team-member">
+                <img src="team1.jpg" alt="Team Member 1">
+                <h3>[Team Member Name 1]</h3>
+                <p>Sales Manager</p>
+            </div>
+            <div class="team-member">
+                <img src="team2.jpg" alt="Team Member 2">
+                <h3>[Team Member Name 2]</h3>
+                <p>Finance Specialist</p>
+            </div>
+            <div class="team-member">
+                <img src="team3.jpg" alt="Team Member 3">
+                <h3>[Team Member Name 3]</h3>
+                <p>Service Technician</p>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <p>&copy; 2024 [Your Dealership Name]</p>
+</footer>
+</body>
+</html>

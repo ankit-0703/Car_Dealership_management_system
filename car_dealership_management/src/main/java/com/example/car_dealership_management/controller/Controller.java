@@ -16,4 +16,26 @@ public class Controller {
         model.addAttribute("customers",custControllers.getAllCustomer());
         return "customers";
     }
+
+    @GetMapping("/home")
+    public String home(){
+        return "home";
+    }
+    @GetMapping("/about")
+    public String about(){
+        return "about";
+    }
+    @GetMapping("/contact")
+    public String contact(){
+        return "contact";
+    }
+    @GetMapping("/carmodel")
+    public String car_model(){
+        return "carmodel";
+    }
+    @GetMapping("add-customer")
+    public String add_customer(){
+        return "add-customer";
+    }
+
 }

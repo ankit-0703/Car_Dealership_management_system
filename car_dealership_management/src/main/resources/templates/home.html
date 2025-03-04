@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Dealership Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+        }
+        nav {
+            background-color: #444;
+            color: #fff;
+            text-align: center;
+            padding: 0.5em 0;
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 0.5em 1em;
+        }
+        nav a:hover {
+            background-color: #555;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .featured-cars {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .car {
+            width: 30%;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        .car img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Welcome to Our Car Dealership</h1>
+</header>
+<nav>
+
+    <a href="/customers">Customers</a>
+    <a href="/carmodel">Car Model</a>
+    <a href="/inventory">Inventory</a>
+    <a href="/sales">Sales</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact</a>
+</nav>
+<div class="container">
+    <h2>Featured Cars</h2>
+    <div class="featured-cars">
+        <div class="car">
+            <img src="car1.jpg" alt="Car 1">
+            <h3>Car Model 1</h3>
+            <p>Price: $25,000</p>
+            <button>View Details</button>
+        </div>
+        <div class="car">
+            <img src="car2.jpg" alt="Car 2">
+            <h3>Car Model 2</h3>
+            <p>Price: $30,000</p>
+            <button>View Details</button>
+        </div>
+        <div class="car">
+            <img src="car3.jpg" alt="Car 3">
+            <h3>Car Model 3</h3>
+            <p>Price: $35,000</p>
+            <button>View Details</button>
+        </div>
+    </div>
+    <p>Welcome to our car dealership. We offer a wide range of new and used cars to suit your needs.</p>
+</div>
+<footer>
+    <p>&copy; 2024 Car Dealership Management</p>
+</footer>
+</body>
+</html>
