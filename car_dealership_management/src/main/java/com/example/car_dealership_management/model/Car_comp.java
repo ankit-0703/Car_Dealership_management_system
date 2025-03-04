@@ -9,8 +9,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
-
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,5 +21,5 @@ public class Car_comp{
 
     private String model_Name;
     private String car_desc;
-    private Date launch_date;
+    private int year;
 }
