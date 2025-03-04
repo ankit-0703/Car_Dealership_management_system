@@ -15,7 +15,8 @@ public class custController {
 
     @GetMapping("customer")
     public List<Customer> getAllCustomer(){
-        return custService.getAllcust();
+        List<Customer>cust=custService.getAllcust();
+        return cust;
     }
     @PostMapping("customer")
     public void addCustomer(@RequestBody Customer customer){
