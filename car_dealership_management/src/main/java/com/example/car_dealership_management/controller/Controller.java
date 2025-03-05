@@ -1,6 +1,8 @@
 package com.example.car_dealership_management.controller;
 
+import com.example.car_dealership_management.Service.Car_Service;
 import com.example.car_dealership_management.Service.Cust_service;
+import com.example.car_dealership_management.model.Car_comp;
 import com.example.car_dealership_management.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Component
@@ -20,6 +23,11 @@ public class Controller {
     @Autowired
     private Cust_service cust_service;
 
+    @Autowired
+    private dealController dealController;
+
+    @Autowired
+    private Car_Service carService;
     @GetMapping("/customers")
     public String customers(Model model){
         model.addAttribute("customers",custControllers.getAllCustomer());
@@ -38,10 +46,6 @@ public class Controller {
     public String contact(){
         return "contact";
     }
-    @GetMapping("/carmodel")
-    public String car_model(){
-        return "carmodel";
-    }
     @GetMapping("add-customer")
     public String add_customer(){
         return "add-customer";
@@ -52,16 +56,15 @@ public class Controller {
         model.addAttribute("customers",customer);
         return "add-customer";
     }
-
     @PostMapping("add-customer")
     public String saveCustomer(@ModelAttribute("customers")Customer customer){
         custControllers.addCustomer(customer);
         return "customers";
     }
+
     @GetMapping("/upcustomer")
     public String update(){
         return "upcustomer";
-
     }
     @GetMapping("upcustomer/{id}")
     public String updateCust(@PathVariable int id,Model model){
@@ -74,12 +77,43 @@ public class Controller {
             return "customers";
         }
     }
-
     @PostMapping("upcustomer")
     public String updating(@ModelAttribute ("customer")Customer cust){
         custControllers.updateCust(cust);
         return "customers";
     }
 
+    @GetMapping("/carmodel")
+    public String car_model(Model model){
+        model.addAttribute("carModels",dealController.getAllCars());
+        return "carmodel";
+    }
 
+    @GetMapping("/add-car")
+    public String add_new_Car(Model model){
+        Car_comp car=new Car_comp();
+        model.addAttribute("carModel",car);
+        return "add-car";
+    }
+
+    @PostMapping("add-car")
+    public String saveCar(@ModelAttribute Car_comp car){
+        dealController.addCar(car);
+        return "carmodel";
+    }
+    @GetMapping("carupdate/{id}")
+    public String updateCar(@PathVariable int id,Model model){
+        Optional<Car_comp> car= Optional.ofNullable(carService.getCarById(id));
+        if(car.isPresent()) {
+            model.addAttribute("carModel", car);
+            return "carupdate";
+        }else{
+            return "carmodel";
+        }
+    }
+    @PostMapping("carupdate")
+    public String updatings(@ModelAttribute("carModel") Car_comp car){
+        dealController.updateVal(car);
+        return "carmodel";
+    }
 }

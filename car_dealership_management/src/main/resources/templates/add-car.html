@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Car Model</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        nav {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 0.5em 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #34495e;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: calc(100% - 12px);
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Add New Car Model</h1>
+</header>
+<nav>
+    <a href="/home">Home</a>
+    <a href="/customers">Customers</a>
+    <a href="/inventory">Inventory</a>
+    <a href="/carmodel">Car Model</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact</a>
+</nav>
+<div class="container">
+    <h2>Add New Car Model</h2>
+    <form th:action="@{add-car}" method="post" th:object="${carModel}">
+        <div class="form-group">
+            <label for="model_Name">Model Name:</label>
+            <input type="text" id="model_Name" th:field="*{model_Name}" required>
+        </div>
+        <div class="form-group">
+            <label for="car_desc">Description:</label>
+            <input type="text" id="car_desc" th:field="*{car_desc}" required>
+        </div>
+        <div class="form-group">
+            <label for="year">Year:</label>
+            <input type="number" id="year" th:field="*{year}" required>
+        </div>
+        <button type="submit">Add Car Model</button>
+    </form>
+</div>
+<footer>
+    <p>&copy; 2024 [Your Dealership Name]</p>
+</footer>
+</body>
+</html>
