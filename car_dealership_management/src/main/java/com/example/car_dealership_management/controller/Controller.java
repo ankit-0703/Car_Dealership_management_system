@@ -22,7 +22,7 @@ public class Controller {
     private Cust_service cust_service;
 
     @Autowired
-    private dealController dealController;
+    private carController carController;
 
     @Autowired
     private Car_Service carService;
@@ -111,7 +111,7 @@ public class Controller {
 
     @GetMapping("/carmodel")
     public String car_model(Model model){
-        model.addAttribute("carModels",dealController.getAllCars());
+        model.addAttribute("carModels", carController.getAllCars());
         return "carmodel";
     }
 
@@ -124,7 +124,7 @@ public class Controller {
 
     @PostMapping("add-car")
     public String saveCar(@ModelAttribute Car_comp car){
-        dealController.addCar(car);
+        carController.addCar(car);
         return "carmodel";
     }
 
@@ -143,14 +143,14 @@ public class Controller {
 
     @PostMapping("carupdate")
     public String updatings(@ModelAttribute("carModel") Car_comp car){
-        dealController.updateVal(car);
+        carController.updateVal(car);
         return "carmodel";
     }
 
 
     @GetMapping("delete_car/{id}")
     public String delCar(@PathVariable int id){
-        dealController.deleteCar(id);
+        carController.deleteCar(id);
         return "success";
     }
 

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class dealController {
+public class carController {
     @Autowired
     private Car_Service service;
     @Autowired
