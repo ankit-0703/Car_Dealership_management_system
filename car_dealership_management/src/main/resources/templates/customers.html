@@ -60,9 +60,8 @@
             color: white;
             text-align: center;
             padding: 1em 0;
-            position: fixed;
-            bottom: 0;
             width: 100%;
+            margin-top: auto; /* Push the footer to the bottom */
         }
         .add-customer-button {
             position: absolute;
@@ -76,6 +75,32 @@
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .update-button {
+            /*position: absolute;*/
+            background-color: #4CAF50; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-button {
+            /*position: absolute;*/
+            background-color: #e21010; /* Green */
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
             border-radius: 5px;
             cursor: pointer;
         }
@@ -104,6 +129,7 @@
             <th>Address</th>
             <th>PIN</th>
             <th>City</th>
+            <th>Action</th>
         </tr>
         </thead>
         <tbody>
@@ -115,6 +141,10 @@
             <td th:text="${customer.address}"></td>
             <td th:text="${customer.PIN}"></td>
             <td th:text="${customer.cust_city}"></td>
+            <td>
+                <a th:href="@{/upcustomer/{id}(id=${customer.cust_id})}" class="update-button">Update</a>
+                <a href="/customers" class="delete-button">Delete</a>
+            </td>
         </tr>
         </tbody>
     </table>

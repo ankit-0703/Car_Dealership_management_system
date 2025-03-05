@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Customer - [Your Dealership Name]</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        nav {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 0.5em 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #34495e;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input {
+            width: calc(100% - 12px);
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            width: 100%;
+            margin-top: auto; /* Push the footer to the bottom */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Update Customer - [Your Dealership Name]</h1>
+</header>
+<nav>
+    <a href="/home">Home</a>
+    <a href="/customers">Customers</a>
+    <a href="/inventory">Inventory</a>
+    <a href="/Car-model">Car Model</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact</a>
+</nav>
+<div class="container">
+    <h2>Update Customer</h2>
+    <form th:action="@{/upcustomer}" method="POST" th:object="${customer}">
+        <input type="hidden" name="cust_id" th:value="*{cust_id}" />
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" th:value="*{name}">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="number" id="phone" name="phone" th:value="*{phone}">
+        </div>
+        <div class="form-group">
+            <label for="cust_email">Email:</label>
+            <input type="email" id="cust_email" name="cust_email" th:value="*{cust_email}">
+        </div>
+        <div class="form-group">
+            <label for="Address">Address:</label>
+            <input type="text" id="Address" name="Address" th:value="*{address}" >
+        </div>
+        <div class="form-group">
+            <label for="PIN">PIN:</label>
+            <input type="number" id="PIN" name="PIN" th:value="*{PIN}" >
+        </div>
+        <div class="form-group">
+            <label for="cust_city">City:</label>
+            <input type="text" id="cust_city" name="cust_city" th:value="*{cust_city}">
+        </div>
+        <button type="submit">Update Customer</button>
+    </form>
+</div>
+<footer>
+    <p>&copy; 2024 [Your Dealership Name]</p>
+</footer>
+</body>
+</html>

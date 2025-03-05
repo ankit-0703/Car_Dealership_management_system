@@ -1,18 +1,24 @@
 package com.example.car_dealership_management.controller;
 
+import com.example.car_dealership_management.Service.Cust_service;
 import com.example.car_dealership_management.model.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.Optional;
 
 @Component
 @org.springframework.stereotype.Controller
 public class Controller {
     @Autowired
     private custController custControllers;
+    @Autowired
+    private Cust_service cust_service;
 
     @GetMapping("/customers")
     public String customers(Model model){
@@ -40,7 +46,6 @@ public class Controller {
     public String add_customer(){
         return "add-customer";
     }
-
     @GetMapping("add-customer/new")
     public String addCustomer(Model model){
         Customer customer =new Customer();
@@ -51,6 +56,28 @@ public class Controller {
     @PostMapping("add-customer")
     public String saveCustomer(@ModelAttribute("customers")Customer customer){
         custControllers.addCustomer(customer);
+        return "customers";
+    }
+    @GetMapping("/upcustomer")
+    public String update(){
+        return "upcustomer";
+
+    }
+    @GetMapping("upcustomer/{id}")
+    public String updateCust(@PathVariable int id,Model model){
+        Optional<Customer> cust=cust_service.getCustbyId(id);
+        if( cust.isPresent()){
+            Customer customer =cust.get();
+            model.addAttribute("customer",customer);
+            return "upcustomer";
+        }else{
+            return "customers";
+        }
+    }
+
+    @PostMapping("upcustomer")
+    public String updating(@ModelAttribute ("customer")Customer cust){
+        custControllers.updateCust(cust);
         return "customers";
     }
 

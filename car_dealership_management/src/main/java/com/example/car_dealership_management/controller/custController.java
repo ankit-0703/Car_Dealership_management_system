@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class custController {
@@ -32,5 +33,9 @@ public class custController {
     public String deleteCust(@PathVariable int custId){
         custService.delete(custId);
         return "Deleted";
+    }
+
+    public Optional<Customer> getCustomerById(int id) {
+        return custService.getCustbyId(id);
     }
 }
