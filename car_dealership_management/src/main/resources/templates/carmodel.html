@@ -97,7 +97,6 @@
     <a href="/home">Home</a>
     <a href="/customers">Customers</a>
     <a href="/inventory">Inventory</a>
-    <a href="/Car-model">Car Model</a>
     <a href="/about">About Us</a>
     <a href="/contact">Contact</a>
 </nav>
@@ -122,7 +121,7 @@
             <td th:text="${carModel.year}"></td>
             <td>
                 <a th:href="@{/carupdate/{id}(id=${carModel.car_model_id})}" class="update-button">Update</a>
-                <a th:href="@{/delete/{id}(id=${carModel.car_model_id})}" class="delete-button">Delete</a>
+                <a th:href="@{/delete_car/{id}(id=${carModel.car_model_id})}" class="delete-button">Delete</a>
             </td>
         </tr>
         </tbody>

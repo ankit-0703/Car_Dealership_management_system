@@ -112,8 +112,8 @@
 </header>
 <nav>
     <a href="/home">Home</a>
+    <a href="/carmodel">Car Model</a>
     <a href="/inventory">Inventory</a>
-    <a href="/Car-model">Car Model</a>
     <a href="/about">About Us</a>
     <a href="/contact">Contact</a>
 </nav>
@@ -143,7 +143,7 @@
             <td th:text="${customer.cust_city}"></td>
             <td>
                 <a th:href="@{/upcustomer/{id}(id=${customer.cust_id})}" class="update-button">Update</a>
-                <a href="/customers" class="delete-button">Delete</a>
+                <a th:href="@{/delete_cust/{id}(id=${customer.cust_id})}" class="delete-button">Delete</a>
             </td>
         </tr>
         </tbody>

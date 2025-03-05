@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 @Component
@@ -103,6 +102,13 @@ public class Controller {
         return "customers";
     }
 
+    @GetMapping("delete_cust/{id}")
+    public String deleteCust(@PathVariable int id){
+        custControllers.deleteCust(id);
+        return "success";
+    }
+
+
     @GetMapping("/carmodel")
     public String car_model(Model model){
         model.addAttribute("carModels",dealController.getAllCars());
@@ -141,6 +147,12 @@ public class Controller {
         return "carmodel";
     }
 
+
+    @GetMapping("delete_car/{id}")
+    public String delCar(@PathVariable int id){
+        dealController.deleteCar(id);
+        return "success";
+    }
 
 
     @GetMapping("order_details")
@@ -181,12 +193,15 @@ public class Controller {
         return "order_details";
     }
 
-//    @DeleteMapping("order_d/{id}")
-//    public void deleteOrder(@PathVariable int id){
-//
-//
-//    }
+    @GetMapping("order_d/{id}")
+    public String deleteOrder(@PathVariable int id){
+        orderController.UpdateOrder(id);
+        return "success";
+    }
 
-
+    @GetMapping("success")
+    public String successful(){
+        return "success";
+    }
 
 }
