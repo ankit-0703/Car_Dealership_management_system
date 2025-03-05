@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class Order_Service {
@@ -26,5 +27,9 @@ public class Order_Service {
 
     public void update(order_details order) {
         orderCarRepo.save(order);
+    }
+
+    public Optional<order_details> getOrderById(int id) {
+        return Optional.of(orderCarRepo.getById(id));
     }
 }

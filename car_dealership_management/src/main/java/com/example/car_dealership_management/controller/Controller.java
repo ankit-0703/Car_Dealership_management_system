@@ -2,15 +2,14 @@ package com.example.car_dealership_management.controller;
 
 import com.example.car_dealership_management.Service.Car_Service;
 import com.example.car_dealership_management.Service.Cust_service;
+import com.example.car_dealership_management.Service.Order_Service;
 import com.example.car_dealership_management.model.Car_comp;
 import com.example.car_dealership_management.model.Customer;
+import com.example.car_dealership_management.model.order_details;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.swing.text.html.Option;
 import java.util.Optional;
@@ -31,6 +30,8 @@ public class Controller {
 
     @Autowired
     private orderController orderController;
+    @Autowired
+    private Order_Service order_Service;
 
 
     @GetMapping("/customers")
@@ -141,10 +142,51 @@ public class Controller {
     }
 
 
+
     @GetMapping("order_details")
     public String order_details(Model model){
         model.addAttribute("orders",orderController.getAllOrders());
         return "order_details";
     }
+
+    @GetMapping("orders_add")
+    public String add_orders(Model model){
+        order_details order_s=new order_details();
+        model.addAttribute("order_s",order_s);
+        return "orders_add";
+    }
+
+    @PostMapping("orders_add")
+    public String saveOrders(@ModelAttribute order_details order_s){
+        orderController.addOrder(order_s);
+        return "order_details";
+    }
+
+
+    @GetMapping("orders_update/{id}")
+    public String update_orders(@PathVariable int id,Model model){
+        Optional<order_details> orders_u=order_Service.getOrderById(id);
+        if(orders_u.isPresent()){
+            model.addAttribute("order_u",orders_u);
+            return "orders_update";
+        }else{
+            return "order_details";
+        }
+    }
+
+
+    @PostMapping("orders_update")
+    public String saveUpdate(@ModelAttribute order_details order_u){
+        orderController.UpdateVal(order_u);
+        return "order_details";
+    }
+
+//    @DeleteMapping("order_d/{id}")
+//    public void deleteOrder(@PathVariable int id){
+//
+//
+//    }
+
+
 
 }
