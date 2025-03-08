@@ -18,8 +18,6 @@ public class inventory_details {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int inventory_id;
     private int order_id;
-    private int cust_id;
     private int car_model_id;
-    private String Name;
-    private String Part_desc;
+    private int units;
 }

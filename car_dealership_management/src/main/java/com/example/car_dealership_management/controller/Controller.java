@@ -3,6 +3,7 @@ package com.example.car_dealership_management.controller;
 import com.example.car_dealership_management.Service.Car_Service;
 import com.example.car_dealership_management.Service.Cust_service;
 import com.example.car_dealership_management.Service.Order_Service;
+import com.example.car_dealership_management.Service.inventory_service;
 import com.example.car_dealership_management.model.Car_comp;
 import com.example.car_dealership_management.model.Customer;
 import com.example.car_dealership_management.model.order_details;
@@ -31,6 +32,11 @@ public class Controller {
     private orderController orderController;
     @Autowired
     private Order_Service order_Service;
+
+    @Autowired
+    private inventoryController inventoryController;
+    @Autowired
+    private inventory_service inventoryService;
 
 
     @GetMapping("/customers")
@@ -203,5 +209,11 @@ public class Controller {
     public String successful(){
         return "success";
     }
+
+
+
+
+
+
 
 }
