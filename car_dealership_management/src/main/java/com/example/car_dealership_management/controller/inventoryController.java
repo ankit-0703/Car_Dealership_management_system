@@ -14,9 +14,8 @@ public class inventoryController {
     private inventory_service inventoryService;
 
     @GetMapping("inventory")
-    public List<inventory_details> inventory_details(){
-        List<inventory_details> inventory=inventoryService.getAllInventory();
-        return inventory;
+    public List<inventory_details> getAll_inventory(){
+        return inventoryService.getAllInventory();
     }
 
     @PostMapping("inventory")

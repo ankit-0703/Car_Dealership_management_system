@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        nav {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 0.5em 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            transition: background-color 0.3s ease;
+        }
+        nav a:hover {
+            background-color: #34495e;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .add-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .update-button, .delete-button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 5px;
+        }
+        .update-button {
+            background-color: #3498db;
+            color: white;
+        }
+        .delete-button {
+            background-color: #e74c3c;
+            color: white;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            width: 100%;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Inventory Details</h1>
+</header>
+<nav>
+    <a href="/home">Home</a>
+    <a href="/customers">Customers</a>
+    <a href="/inventory">Inventory</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact</a>
+</nav>
+<div class="container">
+    <h2>Inventory List</h2>
+    <a th:href="@{/inventory_add}" class="add-button">Add New Inventory Item</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Inventory ID</th>
+            <th>Car Model ID</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="inventory : ${inventoring}">
+            <td th:text="${inventory.inventory_id}"></td>
+            <td th:text="${inventory.order_id}"></td>
+            <td th:text="${inventory.car_model_id}"></td>
+            <td th:text="${inventory.units}"></td>
+            <td>
+                <a th:href="@{/inventory_update/{id}(id=${inventory.inventory_id})}" class="update-button">Update</a>
+                <a th:href="@{/inven_delete/{id}(id=${inventory.inventory_id})}" class="delete-button">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<footer>
+    <p>&copy; 2024 [Your Dealership Name]</p>
+</footer>
+</body>
+</html>

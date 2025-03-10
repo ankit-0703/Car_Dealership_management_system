@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class inventory_service {
@@ -30,5 +31,9 @@ public class inventory_service {
 
     public void deleteById(int id) {
         inventoryRepo.deleteById(id);
+    }
+
+    public Optional<inventory_details> getInventoryById(int id) {
+        return inventoryRepo.findById(id);
     }
 }

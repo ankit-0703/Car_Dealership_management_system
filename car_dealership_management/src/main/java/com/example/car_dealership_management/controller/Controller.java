@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import com.example.car_dealership_management.model.inventory_details;
 
 import java.util.Optional;
 
@@ -34,7 +35,7 @@ public class Controller {
     private Order_Service order_Service;
 
     @Autowired
-    private inventoryController inventoryController;
+    private inventoryController inventory_Controller;
     @Autowired
     private inventory_service inventoryService;
 
@@ -211,9 +212,46 @@ public class Controller {
     }
 
 
+    @GetMapping("inventories")
+    public String inventory(Model model){
+        model.addAttribute("inventoring",inventory_Controller.getAll_inventory());
+        return "inventories";
+    }
+
+    @GetMapping("inventory_add")
+    public String addInventory(Model model){
+        inventory_details detail=new inventory_details();
+        model.addAttribute("addInventory",detail);
+        return "inventory_add";
+    }
+
+    @PostMapping("inventory_add")
+    public String saveInventory(@ModelAttribute inventory_details detail){
+        inventory_Controller.addInventory(detail);
+        return "success";
+    }
 
 
+    @GetMapping("inventory_update/{inventory_id}")
+    public String updateInventory(@PathVariable int inventory_id,Model model){
+        Optional<inventory_details> details=inventoryService.getInventoryById(inventory_id);
+        if(details.isPresent()){
+            model.addAttribute("inventoryUp",details);
+            return "inventory_update";
+        }else{
+            return "inventories";
+        }
+    }
 
+    @PostMapping("inventory_update")
+    public String saveInvUpdate(@ModelAttribute inventory_details details){
+        inventory_Controller.updateInventory(details);
+        return "success";
+    }
 
-
+    @GetMapping("inven_delete/{id}")
+    public String Delete_inventory(@PathVariable int id){
+        inventory_Controller.DeleteInven(id);
+        return "success";
+    }
 }

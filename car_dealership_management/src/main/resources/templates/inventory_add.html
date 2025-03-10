@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Inventory Item</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+        }
+        form {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Add New Inventory Item</h1>
+
+    <form th:action="@{/inventory_add}" th:object="${addInventory}" method="post">
+        <label for="order_id">order Id:</label>
+        <input type="number" id="order_id" th:field="*{order_id}" required/><br />
+
+        <label for="carModelId">Car Model ID:</label>
+        <input type="text" id="carModelId" th:field="*{car_model_id}" required/><br />
+
+
+        <label for="unit">Price:</label>
+        <input type="number" id="unit" th:field="*{units}" required/><br />
+
+        <button type="submit">Add Inventory</button>
+    </form>
+
+    <a href="/inventories">Back to Inventory List</a>
+
+</body>
+</html>
